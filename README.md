@@ -7,7 +7,8 @@
 ### Stranice za inspiraciju
 *www.basketball-reference.com*<br/>
 
-*nba.com*
+*www.nba.com*<br/>
+*www.espn.com/nba* <br/>
 ### Built With
 
 
