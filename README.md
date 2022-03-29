@@ -5,7 +5,8 @@
 * Radimo interaktivnu stanicu za sve fanove košarke, uključiti ćemo real-time bazu. Imati ćemo vrijesti,statistiku za više kategorija. Statistiku od prošlih sezone, kao što su prošli prvaci.
 
 ### Stranice za inspiraciju
-*www.basketball-reference.com*
+*www.basketball-reference.com*<br/>
+
 *nba.com*
 ### Built With
 
