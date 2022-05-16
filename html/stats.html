@@ -1,12 +1,16 @@
 <!DOCTYPE html>
 <html>
+  
 <head>
   <link href="../css/index.css" rel="stylesheet" >
+  <link href="../css/stats.css" rel="stylesheet" >
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
 </style>
 </head>
 <body>
+
+
 
 <div class="topnav">
   <div class = "topnav-left">
@@ -25,9 +29,243 @@
 </div>
 
 <div style="padding-left:16px">
-  <h2>Stats page</h2>
-  <p>Some content.a.</p>
+  <h2>NBA Leaders & Records</h2>
+  <p></p>
 </div>
 
+
+<input type="button" onclick="CreateTableFromJSON()" value="25 igrača" />
+    <p id="showData"></p>
+
+
 </body>
+
+<script>
+  function CreateTableFromJSON() {
+       var myBooks = [
+       {
+    "Rank": "1.",
+    "Player": "Kareem Abdul-Jabbar*",
+    "PTS": 38387
+  },
+  {
+    "Rank": "2.",
+    "Player": "LeBron James",
+    "PTS": 37062
+  },
+  {
+    "Rank": "3.",
+    "Player": "Karl Malone*",
+    "PTS": 36928
+  },
+  {
+    "Rank": "4.",
+    "Player": "Kobe Bryant*",
+    "PTS": 33643
+  },
+  {
+    "Rank": "5.",
+    "Player": "Michael Jordan*",
+    "PTS": 32292
+  },
+  {
+    "Rank": "6.",
+    "Player": "Dirk Nowitzki",
+    "PTS": 31560
+  },
+  {
+    "Rank": "7.",
+    "Player": "Wilt Chamberlain*",
+    "PTS": 31419
+  },
+  {
+    "Rank": "8.",
+    "Player": "Julius Erving*",
+    "PTS": 30026
+  },
+  {
+    "Rank": "9.",
+    "Player": "Moses Malone*",
+    "PTS": 29580
+  },
+  {
+    "Rank": "10.",
+    "Player": "Shaquille O'Neal*",
+    "PTS": 28596
+  },
+  {
+    "Rank": "11.",
+    "Player": "Carmelo Anthony",
+    "PTS": 28289
+  },
+  {
+    "Rank": "12.",
+    "Player": "Dan Issel*",
+    "PTS": 27482
+  },
+  {
+    "Rank": "13.",
+    "Player": "Elvin Hayes*",
+    "PTS": 27313
+  },
+  {
+    "Rank": "14.",
+    "Player": "Hakeem Olajuwon*",
+    "PTS": 26946
+  },
+  {
+    "Rank": "15.",
+    "Player": "Oscar Robertson*",
+    "PTS": 26710
+  },
+  {
+    "Rank": "16.",
+    "Player": "Dominique Wilkins*",
+    "PTS": 26668
+  },
+  {
+    "Rank": "17.",
+    "Player": "George Gervin*",
+    "PTS": 26595
+  },
+  {
+    "Rank": "18.",
+    "Player": "Tim Duncan*",
+    "PTS": 26496
+  },
+  {
+    "Rank": "19.",
+    "Player": "Paul Pierce*",
+    "PTS": 26397
+  },
+  {
+    "Rank": "20.",
+    "Player": "John Havlicek*",
+    "PTS": 26395
+  },
+  {
+    "Rank": "21.",
+    "Player": "Kevin Garnett*",
+    "PTS": 26071
+  },
+  {
+    "Rank": "22.",
+    "Player": "Vince Carter",
+    "PTS": 25728
+  },
+  {
+    "Rank": "23.",
+    "Player": "Alex English*",
+    "PTS": 25613
+  },
+  {
+    "Rank": "24.",
+    "Player": "Kevin Durant",
+    "PTS": 25526
+  },
+  {
+    "Rank": "25.",
+    "Player": "Rick Barry*",
+    "PTS": 25279
+  },
+  {
+    "Rank": "26.",
+    "Player": "Reggie Miller*",
+    "PTS": 25279
+  },
+  {
+    "Rank": "27.",
+    "Player": "Jerry West*",
+    "PTS": 25192
+  },
+  {
+    "Rank": "28.",
+    "Player": "Artis Gilmore*",
+    "PTS": 24941
+  },
+  {
+    "Rank": "29.",
+    "Player": "Patrick Ewing*",
+    "PTS": 24815
+  },
+  {
+    "Rank": "30.",
+    "Player": "Ray Allen*",
+    "PTS": 24505
+  },
+  {
+    "Rank": "31.",
+    "Player": "Allen Iverson*",
+    "PTS": 24368
+  },
+  {
+    "Rank": "32.",
+    "Player": "Charles Barkley*",
+    "PTS": 23757
+  },
+  {
+    "Rank": "33.",
+    "Player": "James Harden",
+    "PTS": 23477
+  }
+]
+let req = new XMLHttpRequest();
+var myBooks;
+req.onreadystatechange = () => {
+if (req.readyState == XMLHttpRequest.DONE) {
+  console.log(req.responseText);
+  //myBooks=req.responseText;
+  console.log("myBooks")
+}
+};
+
+req.open("GET", "https://api.jsonbin.io/v3/b/6270ee32019db46796952002/latest", true);
+req.setRequestHeader("X-Master-Key", "$2b$10$6.nT3tuEGJMUeum3qSMtSuiM.nPEhCYm0Bs7cRSkvV2CtCcZ3LuLa");
+req.send();
+
+
+
+      // EXTRACT VALUE FOR HTML HEADER. 
+      // ('Book ID', 'Book Name', 'Category' and 'Price')
+      var col = [];
+      for (var i = 0; i < myBooks.length; i++) {
+          for (var key in myBooks[i]) {
+              if (col.indexOf(key) === -1) {
+                  col.push(key);
+              }
+          }
+      }
+
+      // CREATE DYNAMIC TABLE.
+      var table = document.createElement("table");
+
+      // CREATE HTML TABLE HEADER ROW USING THE EXTRACTED HEADERS ABOVE.
+
+      var tr = table.insertRow(-1);                   // TABLE ROW.
+
+      for (var i = 0; i < col.length; i++) {
+          var th = document.createElement("th");      // TABLE HEADER.
+          th.innerHTML = col[i];
+          tr.appendChild(th);
+      }
+
+      // ADD JSON DATA TO THE TABLE AS ROWS.
+      for (var i = 0; i < myBooks.length; i++) {
+
+          tr = table.insertRow(-1);
+
+          for (var j = 0; j < col.length; j++) {
+              var tabCell = tr.insertCell(-1);
+              tabCell.innerHTML = myBooks[i][col[j]];
+          }
+      }
+
+      // FINALLY ADD THE NEWLY CREATED TABLE WITH JSON DATA TO A CONTAINER.
+      var divContainer = document.getElementById("showData");
+      divContainer.innerHTML = "";
+      divContainer.appendChild(table);
+  }
+</script>
+
+
 </html>

@@ -38,7 +38,12 @@ body {
   }
   
  img{
-   padding-right: 30%;
+   
    width: 100px;
    height: 100px;
  }
+
+#img_risingStars{
+  width: 100px;
+  height: 100px;
+}
