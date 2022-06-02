@@ -1,0 +1,86 @@
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script type="text/javascript">
+
+  var data1 = [
+    {
+      "games_played": 55,
+      "player_id": 237,
+      "season": 2018,
+      "min": "35:13",
+      "fgm": 10.15,
+      "fga": 19.91,
+      "fg3m": 2.02,
+      "fg3a": 5.95,
+      "ftm": 5.05,
+      "fta": 7.6,
+      "oreb": 1.02,
+      "dreb": 7.42,
+      "reb": 8.44,
+      "ast": 8.25,
+      "stl": 1.31,
+      "blk": 0.6,
+      "turnover": 3.58,
+      "pf": 1.71,
+      "pts": 27.36,
+      "fg_pct": 0.51,
+      "fg3_pct": 0.339,
+      "ft_pct": 0.665
+    }
+    
+  ]
+
+
+  
+    $(document).ready(function () {
+   /*   $.getJSON( 'https://www.balldontlie.io/api/v1/teams/14', function (data) { 
+        document.write(data.city)*/
+  var html = '<table class="table table-striped">';
+      html += '<tr>';
+      var flag = 0;
+      $.each(data1[0], function(index, value){
+          html += '<th>'+index+'</th>';
+      });
+      html += '</tr>';
+       $.each(data1, function(index, value){
+           html += '<tr>';
+          $.each(value, function(index2, value2){
+              html += '<td>'+value2+'</td>';
+          });
+          html += '<tr>';
+       });
+       html += '</table>';
+       $('body').html(html);
+   
+       console.log(data) 
+ 
+    
+    });
+  
+
+/*
+  var html = '<table class="table table-striped">';
+      html += '<tr>';
+      var flag = 0;
+      $.each(data[0], function(index, value){
+          html += '<th>'+index+'</th>';
+      });
+      html += '</tr>';
+       $.each(data, function(index, value){
+           html += '<tr>';
+          $.each(value, function(index2, value2){
+              html += '<td>'+value2+'</td>';
+          });
+          html += '<tr>';
+       });
+       html += '</table>';
+       $('body').html(html);
+   
+       console.log(data) */
+ 
+
+
+
+
+</script>
